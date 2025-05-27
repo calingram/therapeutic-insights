@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, BarChart3, Users, TrendingUp, Brain, Heart, Target } from 'lucide-react';
+const { useState, useEffect } = React;
+const { ChevronRight, ChevronLeft, BarChart3, Users, TrendingUp, Brain, Heart, Target } = lucide;
 
 const TherapeuticInsightsAssessment = () => {
   const [currentSection, setCurrentSection] = useState(0);
@@ -12,19 +12,19 @@ const TherapeuticInsightsAssessment = () => {
     {
       title: "Leadership Mindset",
       subtitle: "How do you approach change and transformation as a leader?",
-      icon: <Brain className="w-6 h-6" />,
+      icon: React.createElement(Brain, { className: "w-6 h-6" }),
       color: "custom-gradient"
     },
     {
       title: "Organisational Culture", 
       subtitle: "How ready is your organisation to embrace deep transformation?",
-      icon: <Users className="w-6 h-6" />,
+      icon: React.createElement(Users, { className: "w-6 h-6" }),
       color: "custom-gradient"
     },
     {
       title: "Change Implementation",
       subtitle: "How do you navigate and sustain transformational change?",
-      icon: <TrendingUp className="w-6 h-6" />,
+      icon: React.createElement(TrendingUp, { className: "w-6 h-6" }),
       color: "custom-gradient"
     }
   ];
@@ -146,7 +146,7 @@ const TherapeuticInsightsAssessment = () => {
   const archetypes = {
     traditionalist: {
       name: "The Steady Steward",
-      icon: <Heart className="w-8 h-8" />,
+      icon: React.createElement(Heart, { className: "w-8 h-8" }),
       color: "custom-gradient",
       description: "You prioritise stability and proven approaches, leading with care and consistency. Your strength lies in maintaining organisational continuity, but you may find deep transformation challenging when it requires significant cultural shifts.",
       opportunity: "Develop comfort with uncertainty and learn to see change as an opportunity for growth rather than a threat to stability. Your steady foundation can become the platform for profound transformation.",
@@ -154,7 +154,7 @@ const TherapeuticInsightsAssessment = () => {
     },
     optimiser: {
       name: "The Progressive Builder",
-      icon: <BarChart3 className="w-8 h-8" />,
+      icon: React.createElement(BarChart3, { className: "w-8 h-8" }),
       color: "custom-gradient",
       description: "You balance operational excellence with openness to change, creating steady progress while maintaining performance. You're building transformation readiness but may need to go deeper into cultural and emotional aspects of change.",
       opportunity: "Accelerate transformation by addressing not just what changes, but how people experience and integrate change. Your systematic approach can become more powerful when combined with emotional intelligence.",
@@ -162,7 +162,7 @@ const TherapeuticInsightsAssessment = () => {
     },
     architect: {
       name: "The Transformation Leader",
-      icon: <Users className="w-8 h-8" />,
+      icon: React.createElement(Users, { className: "w-8 h-8" }),
       color: "custom-gradient",
       description: "You understand that lasting change requires shifts in culture, mindset, and relationships. You're building organisations that can adapt and thrive through complexity, viewing challenges as opportunities for growth.",
       opportunity: "Scale your transformation approach by developing other leaders who can carry this work forward. Your insights need to spread throughout the organisation to create lasting change.",
@@ -170,7 +170,7 @@ const TherapeuticInsightsAssessment = () => {
     },
     visionary: {
       name: "The Change Catalyst",
-      icon: <Brain className="w-8 h-8" />,
+      icon: React.createElement(Brain, { className: "w-8 h-8" }),
       color: "custom-gradient",
       description: "You lead transformation from the inside out, understanding that sustainable change requires inner work as much as outer systems change. You create environments where people can grow into their highest potential whilst achieving business results.",
       opportunity: "Leverage your transformation mastery to influence broader organisational and industry change. Your approach can become a model for how business can be a force for human flourishing.",
@@ -241,93 +241,50 @@ const TherapeuticInsightsAssessment = () => {
 
   if (showResults && archetype) {
     const archetypeData = archetypes[archetype];
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-green-50 p-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
-          .custom-gradient { background: linear-gradient(to right, #01170E, #53645C); }
-          .animate-fadeIn {
-            animation: fadeIn 0.5s ease-in;
-          }
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .slider::-webkit-slider-thumb {
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #1f2937;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          }
-          .slider::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #1f2937;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          }
-        `}
-      </style>
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Your Strategic Assessment Results</h1>
-            <p className="text-gray-600">Discover your unique position in the workplace wellbeing landscape</p>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-            <div className={`custom-gradient rounded-xl p-6 text-white text-center mb-6`}>
-              <div className="flex justify-center mb-4">
-                {archetypeData.icon}
-              </div>
-              <h2 className="text-2xl font-bold mb-2">{archetypeData.name}</h2>
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Your Profile</h3>
-                <p className="text-gray-600 leading-relaxed">{archetypeData.description}</p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Primary Opportunity</h3>
-                <p className="text-gray-600 leading-relaxed">{archetypeData.opportunity}</p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Recommended Next Step</h3>
-                <p className="text-gray-600 leading-relaxed">{archetypeData.nextStep}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Understanding Your Transformation Readiness</h3>
-            <div className="text-gray-600 space-y-4">
-              <p>This assessment reveals where you and your organisation currently stand in your readiness for meaningful, lasting transformation.</p>
-              <p>True organizational transformation isn't just about changing processes or structures—it's about evolving the culture, mindset, and relationships that drive everything your organization does.</p>
-              
-              <div className="bg-gradient-to-r from-gray-50 to-green-50 rounded-lg p-6 mt-6">
-                <h4 className="font-semibold text-gray-800 mb-3">Ready to accelerate your transformation journey?</h4>
-                <p className="text-gray-600 mb-4">Book a confidential leadership consultation to explore how to build deeper transformation readiness and create lasting change in your organisation.</p>
-                <a 
-                  href="https://therapeuticinsights.co.uk/#contact" 
-                  target="_parent"
-                  className="inline-block custom-gradient text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200 text-decoration-none"
-                  style={{textDecoration: 'none'}}
-                >
-                  Book Your Leadership Consultation
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-slate-50 to-green-50 p-4", style: { fontFamily: 'Lato, sans-serif' } },
+      React.createElement('div', { className: "max-w-4xl mx-auto" },
+        React.createElement('div', { className: "text-center mb-8" },
+          React.createElement('h1', { className: "text-3xl font-bold text-gray-800 mb-2" }, 'Your Strategic Assessment Results'),
+          React.createElement('p', { className: "text-gray-600" }, 'Discover your unique position in the workplace wellbeing landscape')
+        ),
+        React.createElement('div', { className: "bg-white rounded-2xl shadow-xl p-8 mb-8" },
+          React.createElement('div', { className: "rounded-xl p-6 text-white text-center mb-6", style: { background: 'linear-gradient(to right, #01170E, #53645C)' } },
+            React.createElement('div', { className: "flex justify-center mb-4" }, archetypeData.icon),
+            React.createElement('h2', { className: "text-2xl font-bold mb-2" }, archetypeData.name)
+          ),
+          React.createElement('div', { className: "space-y-6" },
+            React.createElement('div', null,
+              React.createElement('h3', { className: "text-lg font-semibold text-gray-800 mb-3" }, 'Your Profile'),
+              React.createElement('p', { className: "text-gray-600 leading-relaxed" }, archetypeData.description)
+            ),
+            React.createElement('div', null,
+              React.createElement('h3', { className: "text-lg font-semibold text-gray-800 mb-3" }, 'Primary Opportunity'),
+              React.createElement('p', { className: "text-gray-600 leading-relaxed" }, archetypeData.opportunity)
+            ),
+            React.createElement('div', null,
+              React.createElement('h3', { className: "text-lg font-semibold text-gray-800 mb-3" }, 'Recommended Next Step'),
+              React.createElement('p', { className: "text-gray-600 leading-relaxed" }, archetypeData.nextStep)
+            )
+          )
+        ),
+        React.createElement('div', { className: "bg-white rounded-2xl shadow-xl p-8" },
+          React.createElement('h3', { className: "text-xl font-bold text-gray-800 mb-4" }, 'Understanding Your Transformation Readiness'),
+          React.createElement('div', { className: "text-gray-600 space-y-4" },
+            React.createElement('p', null, 'This assessment reveals where you and your organisation currently stand in your readiness for meaningful, lasting transformation.'),
+            React.createElement('p', null, 'True organizational transformation isn\'t just about changing processes or structures—it\'s about evolving the culture, mindset, and relationships that drive everything your organization does.'),
+            React.createElement('div', { className: "bg-gradient-to-r from-gray-50 to-green-50 rounded-lg p-6 mt-6" },
+              React.createElement('h4', { className: "font-semibold text-gray-800 mb-3" }, 'Ready to accelerate your transformation journey?'),
+              React.createElement('p', { className: "text-gray-600 mb-4" }, 'Book a confidential leadership consultation to explore how to build deeper transformation readiness and create lasting change in your organisation.'),
+              React.createElement('a', { 
+                href: "https://therapeuticinsights.co.uk/#contact",
+                target: "_parent",
+                className: "inline-block text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200",
+                style: { background: 'linear-gradient(to right, #01170E, #53645C)', textDecoration: 'none' }
+              }, 'Book Your Leadership Consultation')
+            )
+          )
+        )
+      )
     );
   }
 
@@ -335,124 +292,80 @@ const TherapeuticInsightsAssessment = () => {
   const questionIndex = getCurrentQuestionIndex();
   const currentValue = responses[questionIndex] || 50;
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Leadership Transformation Readiness Assessment</h1>
-          <p className="text-gray-600">Evaluate your organisation's readiness for meaningful change and sustainable growth</p>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>Question {getCurrentQuestionIndex() + 1} of {getTotalQuestions()}</span>
-            <span>{Math.round(getProgress())}% Complete</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${getProgress()}%` }}
-            ></div>
-          </div>
-        </div>
-
-        {/* Section Header */}
-        <div className="rounded-xl p-6 text-white mb-8" style={{background: 'linear-gradient(to right, #01170E, #53645C)'}}>
-          <div className="flex items-center mb-2">
-            {sections[currentSection].icon}
-            <span className="ml-2 font-medium">Section {currentSection + 1} of 3</span>
-          </div>
-          <h2 className="text-xl font-bold mb-1">{sections[currentSection].title}</h2>
-          <p className="text-white/90">{sections[currentSection].subtitle}</p>
-        </div>
-
-        {/* Question Card */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-          <h3 className="text-xl font-semibold text-gray-800 mb-8 text-center">
-            {questionData.question}
-          </h3>
-
-          {/* Labels */}
-          <div className="flex justify-between mb-8 px-8">
-            <div className="text-left" style={{maxWidth: '45%'}}>
-              <div className="font-semibold mb-1" style={{color: '#01170E'}}>{questionData.leftLabel}</div>
-              <div className="text-sm text-gray-600">{questionData.leftDesc}</div>
-            </div>
-            <div className="text-right" style={{maxWidth: '45%'}}>
-              <div className="font-semibold mb-1" style={{color: '#53645C'}}>{questionData.rightLabel}</div>
-              <div className="text-sm text-gray-600">{questionData.rightDesc}</div>
-            </div>
-          </div>
-
-          {/* Slider */}
-          <div className="mb-8">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={currentValue}
-              onChange={(e) => handleSliderChange(questionIndex, e.target.value)}
-              className="w-full h-3 bg-gradient-to-r from-green-200 via-emerald-200 to-teal-300 rounded-lg appearance-none cursor-pointer slider"
-              style={{
-                background: `linear-gradient(to right, #01170E 0%, #53645C 100%)`
-              }}
-            />
-            <style jsx>{`
-              .slider::-webkit-slider-thumb {
-                appearance: none;
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                background: #1f2937;
-                cursor: pointer;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-              }
-              .slider::-moz-range-thumb {
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                background: #1f2937;
-                cursor: pointer;
-                border: none;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-              }
-            `}</style>
-          </div>
-
-          {/* Insight - Only show after user has moved slider */}
-          {responses[questionIndex] && (
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg p-6 mb-8 animate-fadeIn">
-              <h4 className="font-semibold text-gray-800 mb-2">Strategic Insight</h4>
-              <p className="text-gray-700 text-sm leading-relaxed">{questionData.insight}</p>
-            </div>
-          )}
-
-          {/* Navigation */}
-          <div className="flex justify-between">
-            <button
-              onClick={prevQuestion}
-              disabled={currentSection === 0 && currentQuestion === 0}
-              className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronLeft className="w-4 h-4 mr-1" />
-              Previous
-            </button>
-            
-            <button
-              onClick={nextQuestion}
-              className="flex items-center px-6 py-3 text-white rounded-lg hover:shadow-lg transition-all duration-200"
-              style={{background: 'linear-gradient(to right, #01170E, #53645C)'}}
-            >
-              {currentSection === sections.length - 1 && currentQuestion === questions.filter(q => q.section === currentSection).length - 1 ? 'View Results' : 'Next'}
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+  return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-slate-50 to-green-50 p-4", style: { fontFamily: 'Lato, sans-serif' } },
+    React.createElement('div', { className: "max-w-4xl mx-auto" },
+      React.createElement('div', { className: "text-center mb-8" },
+        React.createElement('h1', { className: "text-3xl font-bold text-gray-800 mb-2" }, 'Leadership Transformation Readiness Assessment'),
+        React.createElement('p', { className: "text-gray-600" }, 'Evaluate your organisation\'s readiness for meaningful change and sustainable growth')
+      ),
+      React.createElement('div', { className: "mb-8" },
+        React.createElement('div', { className: "flex justify-between text-sm text-gray-600 mb-2" },
+          React.createElement('span', null, `Question ${getCurrentQuestionIndex() + 1} of ${getTotalQuestions()}`),
+          React.createElement('span', null, `${Math.round(getProgress())}% Complete`)
+        ),
+        React.createElement('div', { className: "w-full bg-gray-200 rounded-full h-2" },
+          React.createElement('div', { 
+            className: "h-2 rounded-full transition-all duration-300",
+            style: { width: `${getProgress()}%`, background: 'linear-gradient(to right, #01170E, #53645C)' }
+          })
+        )
+      ),
+      React.createElement('div', { className: "rounded-xl p-6 text-white mb-8", style: { background: 'linear-gradient(to right, #01170E, #53645C)' } },
+        React.createElement('div', { className: "flex items-center mb-2" },
+          sections[currentSection].icon,
+          React.createElement('span', { className: "ml-2 font-medium" }, `Section ${currentSection + 1} of 3`)
+        ),
+        React.createElement('h2', { className: "text-xl font-bold mb-1" }, sections[currentSection].title),
+        React.createElement('p', { className: "text-white/90" }, sections[currentSection].subtitle)
+      ),
+      React.createElement('div', { className: "bg-white rounded-2xl shadow-xl p-8 mb-8" },
+        React.createElement('h3', { className: "text-xl font-semibold text-gray-800 mb-8 text-center" }, questionData.question),
+        React.createElement('div', { className: "flex justify-between mb-8 px-8" },
+          React.createElement('div', { className: "text-left", style: { maxWidth: '45%' } },
+            React.createElement('div', { className: "font-semibold mb-1", style: { color: '#01170E' } }, questionData.leftLabel),
+            React.createElement('div', { className: "text-sm text-gray-600" }, questionData.leftDesc)
+          ),
+          React.createElement('div', { className: "text-right", style: { maxWidth: '45%' } },
+            React.createElement('div', { className: "font-semibold mb-1", style: { color: '#53645C' } }, questionData.rightLabel),
+            React.createElement('div', { className: "text-sm text-gray-600" }, questionData.rightDesc)
+          )
+        ),
+        React.createElement('div', { className: "mb-8" },
+          React.createElement('input', {
+            type: "range",
+            min: "0",
+            max: "100",
+            value: currentValue,
+            onChange: (e) => handleSliderChange(questionIndex, e.target.value),
+            className: "w-full h-3 rounded-lg appearance-none cursor-pointer",
+            style: { background: 'linear-gradient(to right, #01170E 0%, #53645C 100%)' }
+          })
+        ),
+        responses[questionIndex] && React.createElement('div', { className: "bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg p-6 mb-8" },
+          React.createElement('h4', { className: "font-semibold text-gray-800 mb-2" }, 'Strategic Insight'),
+          React.createElement('p', { className: "text-gray-700 text-sm leading-relaxed" }, questionData.insight)
+        ),
+        React.createElement('div', { className: "flex justify-between" },
+          React.createElement('button', {
+            onClick: prevQuestion,
+            disabled: currentSection === 0 && currentQuestion === 0,
+            className: "flex items-center px-4 py-2 text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          },
+            React.createElement(ChevronLeft, { className: "w-4 h-4 mr-1" }),
+            'Previous'
+          ),
+          React.createElement('button', {
+            onClick: nextQuestion,
+            className: "flex items-center px-6 py-3 text-white rounded-lg hover:shadow-lg transition-all duration-200",
+            style: { background: 'linear-gradient(to right, #01170E, #53645C)' }
+          },
+            currentSection === sections.length - 1 && currentQuestion === questions.filter(q => q.section === currentSection).length - 1 ? 'View Results' : 'Next',
+            React.createElement(ChevronRight, { className: "w-4 h-4 ml-1" })
+          )
+        )
+      )
+    )
   );
 };
 
-export default TherapeuticInsightsAssessment;
+ReactDOM.render(React.createElement(TherapeuticInsightsAssessment), document.getElementById('root'));
