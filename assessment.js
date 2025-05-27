@@ -197,6 +197,18 @@ const TherapeuticInsightsAssessment = () => {
       ...prev,
       [questionIndex]: value
     }));
+    
+    // Auto-scroll to insight when it appears
+    setTimeout(() => {
+      const insightElement = document.querySelector('.insight-block');
+      if (insightElement) {
+        insightElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'nearest',
+          inline: 'nearest'
+        });
+      }
+    }, 100);
   };
 
   const nextQuestion = () => {
@@ -242,7 +254,7 @@ const TherapeuticInsightsAssessment = () => {
       fontFamily: 'Lato, sans-serif',
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #f8fafc 0%, #f0fdf4 100%)',
-      padding: '1rem'
+      padding: '0.5rem'
     },
     maxWidth: {
       maxWidth: '56rem',
@@ -251,16 +263,16 @@ const TherapeuticInsightsAssessment = () => {
     gradient: {
       background: 'linear-gradient(to right, #01170E, #53645C)',
       borderRadius: '0.75rem',
-      padding: '1.5rem',
+      padding: '1rem',
       color: 'white',
-      marginBottom: '2rem'
+      marginBottom: '1rem'
     },
     card: {
       backgroundColor: 'white',
       borderRadius: '1rem',
       boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-      padding: '2rem',
-      marginBottom: '2rem'
+      padding: '1.5rem',
+      marginBottom: '1rem'
     },
     slider: {
       width: '100%',
@@ -376,8 +388,8 @@ const TherapeuticInsightsAssessment = () => {
         React.createElement('p', { style: { opacity: '0.9' } }, sections[currentSection].subtitle)
       ),
       React.createElement('div', { style: styles.card },
-        React.createElement('h3', { style: { fontSize: '1.25rem', fontWeight: '600', color: '#1f2937', marginBottom: '2rem', textAlign: 'center' } }, questionData.question),
-        React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', marginBottom: '2rem', padding: '0 2rem' } },
+        React.createElement('h3', { style: { fontSize: '1.125rem', fontWeight: '600', color: '#1f2937', marginBottom: '1.5rem', textAlign: 'center' } }, questionData.question),
+        React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', padding: '0 1rem' } },
           React.createElement('div', { style: { textAlign: 'left', maxWidth: '45%' } },
             React.createElement('div', { style: { fontWeight: '600', marginBottom: '0.25rem', color: '#01170E' } }, questionData.leftLabel),
             React.createElement('div', { style: { fontSize: '0.875rem', color: '#6b7280' } }, questionData.leftDesc)
@@ -387,7 +399,7 @@ const TherapeuticInsightsAssessment = () => {
             React.createElement('div', { style: { fontSize: '0.875rem', color: '#6b7280' } }, questionData.rightDesc)
           )
         ),
-        React.createElement('div', { style: { marginBottom: '2rem' } },
+        React.createElement('div', { style: { marginBottom: '1.5rem' } },
           React.createElement('input', {
             type: "range",
             min: "0",
@@ -397,7 +409,10 @@ const TherapeuticInsightsAssessment = () => {
             style: styles.slider
           })
         ),
-        responses[questionIndex] && React.createElement('div', { style: { background: 'linear-gradient(to right, #fffbeb, #fed7aa)', borderRadius: '0.5rem', padding: '1.5rem', marginBottom: '2rem' } },
+        responses[questionIndex] && React.createElement('div', { 
+          className: 'insight-block',
+          style: { background: 'linear-gradient(to right, #fffbeb, #fed7aa)', borderRadius: '0.5rem', padding: '1rem', marginBottom: '1.5rem' } 
+        },
           React.createElement('h4', { style: { fontWeight: '600', color: '#1f2937', marginBottom: '0.5rem' } }, 'Strategic Insight'),
           React.createElement('p', { style: { color: '#374151', fontSize: '0.875rem', lineHeight: '1.625' } }, questionData.insight)
         ),
